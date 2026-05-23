@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Figuritas</title>
+
+	<link rel="manifest" href="manifest.json">
+	<link rel="stylesheet" href="css/style.css">
+
+	<meta name="theme-color" content="#111111">
+</head>
+<body>
+
+	<div class="container">
+
+		<h1>Figuritas Faltantes</h1>
+
+		<div class="input-area">
+			<input
+				type="text"
+				id="figuritaInput"
+				placeholder=" "
+				autocomplete="off"
+			>
+
+			<button id="agregarBtn">
+				Agregar
+			</button>
+		</div>
+
+		<div class="stats">
+			Total faltantes:
+			<span id="contador">0</span>
+		</div>
+
+		<ul id="listaFiguritas"></ul>
+
+	</div>
+
+	<script src="js/storage.js"></script>
+	<script src="js/ui.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>
