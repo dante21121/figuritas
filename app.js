@@ -1,3 +1,30 @@
+const input =
+	document.getElementById(
+		"figuritaInput"
+	);
+
+const botonAgregar =
+	document.getElementById(
+		"agregarBtn"
+	);
+
+const lista =
+	document.getElementById(
+		"listaFiguritas"
+	);
+
+const contador =
+	document.getElementById(
+		"contador"
+	);
+
+let figuritas =
+	cargarFiguritas();
+
+ordenarFiguritas();
+
+actualizarLista();
+
 function ordenarFiguritas() {
 
 	figuritas.sort((a, b) => {
@@ -23,8 +50,11 @@ function ordenarFiguritas() {
 			return -1;
 		}
 
-		const partesA = a.split(" ");
-		const partesB = b.split(" ");
+		const partesA =
+			a.split(" ");
+
+		const partesB =
+			b.split(" ");
 
 		const paisA =
 			partesA[0];
@@ -49,3 +79,47 @@ function ordenarFiguritas() {
 		return numeroA - numeroB;
 	});
 }
+
+function agregarFigurita() {
+
+	const valor =
+		input.value
+			.trim()
+			.toLowerCase();
+
+	if (valor === "") {
+		return;
+	}
+
+	figuritas.push(valor);
+
+	ordenarFiguritas();
+
+	guardarFiguritas(
+		figuritas
+	);
+
+	actualizarLista();
+
+	input.value = "";
+
+	input.focus();
+}
+
+botonAgregar.addEventListener(
+	"click",
+	agregarFigurita
+);
+
+input.addEventListener(
+	"keydown",
+	(event) => {
+
+		if (
+			event.key === "Enter"
+		) {
+
+			agregarFigurita();
+		}
+	}
+);
