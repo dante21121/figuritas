@@ -1,40 +1,51 @@
-const input = document.getElementById("figuritaInput");
-const botonAgregar = document.getElementById("agregarBtn");
+function ordenarFiguritas() {
 
-const lista = document.getElementById("listaFiguritas");
-const contador = document.getElementById("contador");
+	figuritas.sort((a, b) => {
 
-let figuritas = cargarFiguritas();
+		const regex =
+			/^[a-z]+\s\d+$/;
 
-actualizarLista();
+		const validaA =
+			regex.test(a);
 
-function agregarFigurita() {
+		const validaB =
+			regex.test(b);
 
-	const valor = input.value.trim().toLowerCase();
+		if (!validaA && !validaB) {
+			return 0;
+		}
 
-	if (valor === "") {
-		return;
-	}
+		if (!validaA) {
+			return 1;
+		}
 
-	figuritas.push(valor);
+		if (!validaB) {
+			return -1;
+		}
 
-	guardarFiguritas(figuritas);
+		const partesA = a.split(" ");
+		const partesB = b.split(" ");
 
-	actualizarLista();
+		const paisA =
+			partesA[0];
 
-	input.value = "";
+		const paisB =
+			partesB[0];
 
-	input.focus();
+		const numeroA =
+			parseInt(partesA[1]);
+
+		const numeroB =
+			parseInt(partesB[1]);
+
+		if (paisA < paisB) {
+			return -1;
+		}
+
+		if (paisA > paisB) {
+			return 1;
+		}
+
+		return numeroA - numeroB;
+	});
 }
-
-botonAgregar.addEventListener(
-	"click",
-	agregarFigurita
-);
-
-input.addEventListener("keydown", (event) => {
-
-	if (event.key === "Enter") {
-		agregarFigurita();
-	}
-});
