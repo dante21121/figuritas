@@ -1,46 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0"
+	>
 
 	<title>Figuritas</title>
 
 	<link rel="manifest" href="manifest.json">
-	<link rel="stylesheet" href="style.css">
 
-	<meta name="theme-color" content="#111111">
+	<link
+		rel="stylesheet"
+		href="style.css"
+	>
+
+	<meta
+		name="theme-color"
+		content="#111111"
+	>
+
 </head>
+
 <body>
 
 	<div class="container">
 
-		<h1>Figuritas Faltantes</h1>
+		<div class="top-bar">
 
-		<div class="input-area">
-			<input
-				type="text"
-				id="figuritaInput"
-				placeholder=" "
-				autocomplete="off"
-			>
+			<h1>Figuritas Faltantes</h1>
 
-			<button id="agregarBtn">
-				Agregar
-			</button>
+			<div class="input-area">
+
+				<input
+					type="text"
+					id="figuritaInput"
+					placeholder="Ej: arg 17"
+					autocomplete="off"
+				>
+
+				<button id="agregarBtn">
+					Agregar
+				</button>
+
+			</div>
+
+			<div class="stats">
+
+				Te faltan:
+				<span id="contador">0</span>
+
+			</div>
+
 		</div>
 
-		<div class="stats">
-			Total faltantes:
-			<span id="contador">0</span>
-		</div>
+		<div class="lista-container">
 
-		<ul id="listaFiguritas"></ul>
+			<ul id="listaFiguritas"></ul>
+
+		</div>
 
 	</div>
 
 	<script src="storage.js"></script>
+
 	<script src="ui.js"></script>
+
 	<script src="app.js"></script>
 
 </body>
