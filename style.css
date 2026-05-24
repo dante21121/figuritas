@@ -15,11 +15,26 @@ body {
 .container {
 	max-width: 500px;
 	margin: auto;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
 }
 
 h1 {
 	text-align: center;
 	margin-bottom: 25px;
+}
+
+.top-bar {
+	position: sticky;
+	top: 0;
+
+	background: #111;
+
+	padding-bottom: 15px;
+
+	z-index: 100;
 }
 
 .input-area {
@@ -54,6 +69,11 @@ button:hover {
 .stats {
 	margin-bottom: 20px;
 	font-size: 18px;
+}
+
+.lista-container {
+	flex: 1;
+	overflow-y: auto;
 }
 
 ul {
