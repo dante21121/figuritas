@@ -1,92 +1,22 @@
-const input =
-	document.getElementById(
-		"figuritaInput"
+function guardarFiguritas(figuritas) {
+
+	localStorage.setItem(
+		"figuritas",
+		JSON.stringify(figuritas)
 	);
-
-const botonAgregar =
-	document.getElementById(
-		"agregarBtn"
-	);
-
-const lista =
-	document.getElementById(
-		"listaFiguritas"
-	);
-
-const contador =
-	document.getElementById(
-		"contador"
-	);
-
-let figuritas =
-	cargarFiguritas();
-
-actualizarLista();
-
-function ordenarFiguritas() {
-
-	figuritas.sort((a, b) => {
-
-		const partesA = a.split(" ");
-		const partesB = b.split(" ");
-
-		const paisA = partesA[0];
-		const paisB = partesB[0];
-
-		const numeroA =
-			parseInt(partesA[1]);
-
-		const numeroB =
-			parseInt(partesB[1]);
-
-		if (paisA < paisB) {
-			return -1;
-		}
-
-		if (paisA > paisB) {
-			return 1;
-		}
-
-		return numeroA - numeroB;
-	});
 }
 
-function agregarFigurita() {
+function cargarFiguritas() {
 
-	const valor =
-		input.value
-			.trim()
-			.toLowerCase();
+	const datos =
+		localStorage.getItem(
+			"figuritas"
+		);
 
-	if (valor === "") {
-		return;
+	if (datos) {
+
+		return JSON.parse(datos);
 	}
 
-	figuritas.push(valor);
-
-	ordenarFiguritas();
-
-	guardarFiguritas(figuritas);
-
-	actualizarLista();
-
-	input.value = "";
-
-	input.focus();
+	return [];
 }
-
-botonAgregar.addEventListener(
-	"click",
-	agregarFigurita
-);
-
-input.addEventListener(
-	"keydown",
-	(event) => {
-
-		if (event.key === "Enter") {
-
-			agregarFigurita();
-		}
-	}
-);
