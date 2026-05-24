@@ -1,5 +1,5 @@
 html {
-	background: #000;
+	background: #111;
 }
 
 * {
@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	background: #000;
+	background: #111;
 	color: white;
 
 	height: 100vh;
@@ -34,7 +34,7 @@ body {
 
 	top: 0;
 
-	background: #000;
+	background: #111;
 
 	padding: 20px;
 
