@@ -1,33 +1,51 @@
-function actualizarLista() {
+.modal {
+	position: fixed;
+	inset: 0;
 
-	lista.innerHTML = "";
+	background: rgba(0, 0, 0, 0.7);
 
-	figuritas.forEach((figurita, index) => {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-		const li = document.createElement("li");
-		li.className = "item";
+	z-index: 9999;
+}
 
-		const texto = document.createElement("span");
-		texto.textContent = figurita;
+.oculto {
+	display: none;
+}
 
-		const botonEliminar = document.createElement("button");
-		botonEliminar.textContent = "X";
-		botonEliminar.className = "delete-btn";
+.modal-contenido {
+	background: #1e1e1e;
 
-		botonEliminar.addEventListener("click", () => {
+	padding: 25px;
 
-			figuritas.splice(index, 1);
+	border-radius: 18px;
 
-			guardarFiguritas(figuritas);
+	width: 90%;
+	max-width: 320px;
 
-			actualizarLista();
-		});
+	text-align: center;
+}
 
-		li.appendChild(texto);
-		li.appendChild(botonEliminar);
+.modal-contenido p {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
 
-		lista.appendChild(li);
-	});
+.modal-botones {
+	display: flex;
+	gap: 10px;
+}
 
-	contador.textContent = figuritas.length;
+.modal-botones button {
+	flex: 1;
+}
+
+#confirmarSi {
+	background: #2ecc71;
+}
+
+#confirmarNo {
+	background: #e74c3c;
 }
