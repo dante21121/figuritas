@@ -1,51 +1,108 @@
-.modal {
-	position: fixed;
-	inset: 0;
+let indicePendiente = null;
 
-	background: rgba(0, 0, 0, 0.7);
+function actualizarLista() {
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	lista.innerHTML = "";
 
-	z-index: 9999;
+	figuritas.forEach((figurita, index) => {
+
+		const li = document.createElement("li");
+
+		li.className = "item";
+
+		const texto = document.createElement("span");
+
+		texto.textContent = figurita;
+
+		const botonEliminar =
+			document.createElement("button");
+
+		botonEliminar.textContent = "X";
+
+		botonEliminar.className = "delete-btn";
+
+		botonEliminar.addEventListener(
+			"click",
+			() => {
+
+				const modal =
+					document.getElementById(
+						"modalConfirmacion"
+					);
+
+				modal.classList.remove(
+					"oculto"
+				);
+
+				indicePendiente = index;
+			}
+		);
+
+		li.appendChild(texto);
+
+		li.appendChild(botonEliminar);
+
+		lista.appendChild(li);
+	});
+
+	contador.textContent =
+		figuritas.length;
 }
 
-.oculto {
-	display: none;
-}
+window.addEventListener("DOMContentLoaded", () => {
 
-.modal-contenido {
-	background: #1e1e1e;
+	const botonSi =
+		document.getElementById(
+			"confirmarSi"
+		);
 
-	padding: 25px;
+	const botonNo =
+		document.getElementById(
+			"confirmarNo"
+		);
 
-	border-radius: 18px;
+	const modal =
+		document.getElementById(
+			"modalConfirmacion"
+		);
 
-	width: 90%;
-	max-width: 320px;
+	botonSi.addEventListener(
+		"click",
+		() => {
 
-	text-align: center;
-}
+			if (
+				indicePendiente !== null
+			) {
 
-.modal-contenido p {
-	font-size: 18px;
-	margin-bottom: 20px;
-}
+				figuritas.splice(
+					indicePendiente,
+					1
+				);
 
-.modal-botones {
-	display: flex;
-	gap: 10px;
-}
+				guardarFiguritas(
+					figuritas
+				);
 
-.modal-botones button {
-	flex: 1;
-}
+				actualizarLista();
+			}
 
-#confirmarSi {
-	background: #2ecc71;
-}
+			modal.classList.add(
+				"oculto"
+			);
 
-#confirmarNo {
-	background: #e74c3c;
-}
+			indicePendiente = null;
+		}
+	);
+
+	botonNo.addEventListener(
+		"click",
+		() => {
+
+			modal.classList.add(
+				"oculto"
+			);
+
+			indicePendiente = null;
+		}
+	);
+});
