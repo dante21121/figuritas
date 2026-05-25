@@ -82,10 +82,19 @@ function ordenarFiguritas() {
 
 function agregarFigurita() {
 
-	const valor =
-		input.value
-			.trim()
-			.toLowerCase();
+	let valor =
+	input.value
+		.trim()
+		.toLowerCase();
+
+	if (valor.length > 0) {
+
+		valor =
+			valor.charAt(0)
+			.toUpperCase() +
+
+			valor.slice(1);
+	}
 
 	if (valor === "") {
 		return;
