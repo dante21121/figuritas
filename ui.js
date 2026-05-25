@@ -28,7 +28,7 @@ function actualizarLista() {
 					);
 
 				textoModal.textContent =
-					`¿Estas seguro de eliminar "${figurita}"?`;
+					`¿Seguro que quieres eliminar "${figurita}"?`;
 
 				modal.classList.remove(
 					"oculto"
