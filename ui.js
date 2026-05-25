@@ -6,22 +6,14 @@ function actualizarLista() {
 
 	figuritas.forEach((figurita, index) => {
 
-		const li = document.createElement("li");
+		const li =
+			document.createElement("li");
 
 		li.className = "item";
 
-		const texto = document.createElement("span");
+		li.textContent = figurita;
 
-		texto.textContent = figurita;
-
-		const botonEliminar =
-			document.createElement("button");
-
-		botonEliminar.textContent = "X";
-
-		botonEliminar.className = "delete-btn";
-
-		botonEliminar.addEventListener(
+		li.addEventListener(
 			"click",
 			() => {
 
@@ -46,10 +38,6 @@ function actualizarLista() {
 			}
 		);
 
-		li.appendChild(texto);
-
-		li.appendChild(botonEliminar);
-
 		lista.appendChild(li);
 	});
 
@@ -57,60 +45,63 @@ function actualizarLista() {
 		figuritas.length;
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener(
+	"DOMContentLoaded",
+	() => {
 
-	const botonSi =
-		document.getElementById(
-			"confirmarSi"
-		);
+		const botonSi =
+			document.getElementById(
+				"confirmarSi"
+			);
 
-	const botonNo =
-		document.getElementById(
-			"confirmarNo"
-		);
+		const botonNo =
+			document.getElementById(
+				"confirmarNo"
+			);
 
-	const modal =
-		document.getElementById(
-			"modalConfirmacion"
-		);
+		const modal =
+			document.getElementById(
+				"modalConfirmacion"
+			);
 
-	botonSi.addEventListener(
-		"click",
-		() => {
+		botonSi.addEventListener(
+			"click",
+			() => {
 
-			if (
-				indicePendiente !== null
-			) {
+				if (
+					indicePendiente !== null
+				) {
 
-				figuritas.splice(
-					indicePendiente,
-					1
+					figuritas.splice(
+						indicePendiente,
+						1
+					);
+
+					guardarFiguritas(
+						figuritas
+					);
+
+					actualizarLista();
+				}
+
+				modal.classList.add(
+					"oculto"
 				);
 
-				guardarFiguritas(
-					figuritas
-				);
-
-				actualizarLista();
+				indicePendiente = null;
 			}
+		);
 
-			modal.classList.add(
-				"oculto"
-			);
+		botonNo.addEventListener(
+			"click",
+			() => {
 
-			indicePendiente = null;
-		}
-	);
+				modal.classList.add(
+					"oculto"
+				);
 
-	botonNo.addEventListener(
-		"click",
-		() => {
-
-			modal.classList.add(
-				"oculto"
-			);
-
-			indicePendiente = null;
-		}
-	);
-});
+				indicePendiente = null;
+			}
+		);
+	}
+);
