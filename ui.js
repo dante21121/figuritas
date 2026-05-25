@@ -30,6 +30,14 @@ function actualizarLista() {
 						"modalConfirmacion"
 					);
 
+				const textoModal =
+					document.getElementById(
+						"textoModal"
+					);
+
+				textoModal.textContent =
+					`¿Estas seguro de eliminar "${figurita}"?`;
+
 				modal.classList.remove(
 					"oculto"
 				);
